@@ -3,7 +3,8 @@
 const HERO = {
   "hero1": "images/Portfolio/hero1.webp",
   "hero2": "images/Portfolio/hero2.webp",
-  "hero3": "images/Portfolio/hero3.webp"
+  "hero3": "images/Portfolio/hero3.webp",
+  "hero4": "images/Portfolio/hero4.webp"
 };
 
 const PROJECTS = [
