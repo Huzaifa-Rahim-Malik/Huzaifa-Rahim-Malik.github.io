@@ -21,7 +21,7 @@ const PROJECTS = [
     "id": "rover",
     "title": "AT-IntelliRover: 4WD Outdoor Autonomous Vehicle",
     "tag": "Outdoor robotics",
-    "status": "In development",
+    "status": "Design Completed",
     "cover": "images/AT_IntelliRover/cover.webp",
     "sum": "A ROS 2 skid-steer platform for outdoor navigation, 3D mapping and perception, with a custom power distribution board I designed.",
     "ov": [
@@ -110,7 +110,7 @@ const PROJECTS = [
     "id": "swarm",
     "title": "Mini Swarm Vehicle",
     "tag": "Swarm robotics",
-    "status": "Built",
+    "status": "Completed",
     "cover": "images/Mini_Swarm_Vehicle/cover.webp",
     "sum": "A compact 3D-printed differential-drive robot for swarm and indoor navigation research, with its own electronics and low-level control.",
     "ov": [
@@ -198,8 +198,8 @@ const PROJECTS = [
     "id": "multirobot",
     "title": "LLM Multi-Robot Navigation and Robot Tracking",
     "tag": "AI + multi-robot",
-    "status": "In development",
-    "cover": "images/Multi_Robot_Navigation/cover.svg",
+    "status": "Completed",
+    "cover": "images/Multi-Robot Navigation and RobotTracking/GUI.png",
     "sum": "A leader-follower multi-robot system: a TurtleBot 4 driven by voice and text commands, dual ZED 2i cameras tracking every robot, and pose hand-off to a custom mini swarm vehicle.",
     "ov": [
       "An extension of my LLM-based TurtleBot 4 navigation work to a leader-follower setup in an 8 × 3 m indoor arena. The TurtleBot 4 leader takes natural-language text or voice commands (Whisper, Ollama and Nav2 on ROS 2 Jazzy), and on arrival it publishes its position so the custom Mini Swarm Vehicle follower can be sent to it.",
@@ -219,7 +219,9 @@ const PROJECTS = [
       ["Language and speech", "Ollama LLM, Whisper, Piper TTS"],
       ["Arena", "8 × 3 m indoor arena"]
     ],
-    "gal": [],
+    "gal": [
+      ["images/Multi-Robot Navigation and RobotTracking/system.png", "Overall Flow of System"]
+    ],
     "demo": null,
     "tech": [
       "ROS 2 Jazzy",
