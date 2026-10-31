@@ -199,7 +199,7 @@ const PROJECTS = [
     "title": "LLM Multi-Robot Navigation and Robot Tracking",
     "tag": "AI + multi-robot",
     "status": "Completed",
-    "cover": "images/Multi-Robot Navigation and RobotTracking/GUI.png",
+    "cover": "images/Multi-Robot Navigation and RobotTracking/GUI.webp",
     "sum": "A leader-follower multi-robot system: a TurtleBot 4 driven by voice and text commands, dual ZED 2i cameras tracking every robot, and pose hand-off to a custom mini swarm vehicle.",
     "ov": [
       "An extension of my LLM-based TurtleBot 4 navigation work to a leader-follower setup in an 8 × 3 m indoor arena. The TurtleBot 4 leader takes natural-language text or voice commands (Whisper, Ollama and Nav2 on ROS 2 Jazzy), and on arrival it publishes its position so the custom Mini Swarm Vehicle follower can be sent to it.",
@@ -223,7 +223,7 @@ const PROJECTS = [
       ["images/Multi-Robot Navigation and RobotTracking/system.png", "Overall Flow of System"]
     ],
     "demo": ["images/Multi-Robot Navigation and RobotTracking/GUI.mp4", "Real-Time GUI"],
-    "demo2": ["images/LLMulti-Robot Navigation and RobotTracking/Camera.mp4", "Multiple Robot Tracking in Arena"],
+    "demo2": ["images/Multi-Robot Navigation and RobotTracking/Camera.mp4", "Multiple Robot Tracking in Arena"],
     "tech": [
       "ROS 2 Jazzy",
       "Nav2",
@@ -233,7 +233,7 @@ const PROJECTS = [
       "ZED 2i",
       "Python"
     ],
-    "role": "TurtleBot 4 algorithm design and GUI development. Team project at AITeC Islamabad with Dr. Muhammad Ahmad Kamran (team lead), Muhammad Awais Khan (Mini Swarm Vehicle) and Muhammad Rizwan (camera tracking).",
+    "role": "TurtleBot 4 algorithm design and GUI development.",
     "repo": "https://github.com/Huzaifa-Rahim-Malik/LLM-Multi-Robot-Navigation-and-Robot-Tracking"
   },
   {
