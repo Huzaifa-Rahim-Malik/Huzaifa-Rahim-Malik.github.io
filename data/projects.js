@@ -222,7 +222,8 @@ const PROJECTS = [
     "gal": [
       ["images/Multi-Robot Navigation and RobotTracking/system.png", "Overall Flow of System"]
     ],
-    "demo": null,
+    "demo": ["images/Multi-Robot Navigation and RobotTracking/GUI.mp4", "Real-Time GUI"],
+    "demo2": ["images/LLMulti-Robot Navigation and RobotTracking/Camera.mp4", "Multiple Robot Tracking in Arena"],
     "tech": [
       "ROS 2 Jazzy",
       "Nav2",
