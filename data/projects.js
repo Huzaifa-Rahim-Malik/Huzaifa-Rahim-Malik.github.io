@@ -197,7 +197,7 @@ const PROJECTS = [
   {
     "id": "multirobot",
     "title": "LLM Multi-Robot Navigation and Robot Tracking",
-    "tag": "AI + multi-robot",
+    "tag": "AI + multi-robot Navigation + Tracking",
     "status": "Completed",
     "cover": "images/Multi-Robot Navigation and RobotTracking/cover.webp",
     "sum": "A leader-follower multi-robot system: a TurtleBot 4 driven by voice and text commands, dual ZED 2i cameras tracking every robot, and pose hand-off to a custom mini swarm vehicle.",
@@ -220,7 +220,7 @@ const PROJECTS = [
       ["Arena", "8 × 3 m indoor arena"]
     ],
     "gal": [
-      ["images/Multi-Robot Navigation and RobotTracking/system.webg", "Overall Flow of System"]
+      ["images/Multi-Robot Navigation and RobotTracking/system.webp", "Overall Flow of System"]
     ],
     "demo": ["images/Multi-Robot Navigation and RobotTracking/GUI.mp4", "Real-Time GUI"],
     "demo2": ["images/Multi-Robot Navigation and RobotTracking/Camera.mp4", "Multiple Robot Tracking in Arena"],
