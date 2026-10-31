@@ -195,6 +195,45 @@ const PROJECTS = [
     "repo": "https://github.com/Huzaifa-Rahim-Malik/LLM-Based-Navigation-Using-Turtlebot4"
   },
   {
+    "id": "multirobot",
+    "title": "LLM Multi-Robot Navigation and Robot Tracking",
+    "tag": "AI + multi-robot",
+    "status": "In development",
+    "cover": "images/Multi_Robot_Navigation/cover.svg",
+    "sum": "A leader-follower multi-robot system: a TurtleBot 4 driven by voice and text commands, dual ZED 2i cameras tracking every robot, and pose hand-off to a custom mini swarm vehicle.",
+    "ov": [
+      "An extension of my LLM-based TurtleBot 4 navigation work to a leader-follower setup in an 8 × 3 m indoor arena. The TurtleBot 4 leader takes natural-language text or voice commands (Whisper, Ollama and Nav2 on ROS 2 Jazzy), and on arrival it publishes its position so the custom Mini Swarm Vehicle follower can be sent to it.",
+      "Two ceiling-mounted ZED 2i cameras run YOLOv8 detection and convert each detection to arena coordinates with a per-camera affine transform. Detections are fused across cameras and matched over time with the Hungarian algorithm, giving persistent global track IDs that survive hand-off between cameras. A three-column Tk GUI shows chat, both camera views, arena tracking, locations and the leader sensor data."
+    ],
+    "hl": [
+      "Global tracking pipeline: ZED 2i depth to XYZ, affine transform to arena (x, y), cross-camera fusion and Hungarian matching for persistent track IDs.",
+      "Click-based camera calibration tool that fits the transform from 8 to 12 arena marker points per camera.",
+      "Leader pose published at 10 Hz plus a one-shot arrival position, bridged between ROS domains 23 (leader) and 35 (follower) with domain_bridge.",
+      "Two-class YOLOv8 model trained for the ZED camera views."
+    ],
+    "specs": [
+      ["Stack", "ROS 2 Jazzy, Nav2, SLAM Toolbox, AMCL"],
+      ["Leader", "TurtleBot 4"],
+      ["Follower", "Custom Mini Swarm Vehicle"],
+      ["Cameras", "2 × ZED 2i, YOLOv8 detection"],
+      ["Language and speech", "Ollama LLM, Whisper, Piper TTS"],
+      ["Arena", "8 × 3 m indoor arena"]
+    ],
+    "gal": [],
+    "demo": null,
+    "tech": [
+      "ROS 2 Jazzy",
+      "Nav2",
+      "Ollama",
+      "Whisper",
+      "YOLOv8",
+      "ZED 2i",
+      "Python"
+    ],
+    "role": "TurtleBot 4 algorithm design and GUI development. Team project at AITeC Islamabad with Dr. Muhammad Ahmad Kamran (team lead), Muhammad Awais Khan (Mini Swarm Vehicle) and Muhammad Rizwan (camera tracking).",
+    "repo": "https://github.com/Huzaifa-Rahim-Malik/LLM-Multi-Robot-Navigation-and-Robot-Tracking"
+  },
+  {
     "id": "faultrig",
     "title": "Industrial Fault Simulator",
     "tag": "Predictive maintenance",
@@ -238,6 +277,7 @@ const PROJECTS = [
     "role": "Electronics design for V1.0. Team project at AITeC Islamabad.",
     "repo": "https://github.com/Huzaifa-Rahim-Malik/Industrial-Fault-Simulator"
   },
+  /* X500 DRONE PROJECT - hidden until data is ready. To show it again, delete this line and the closing marker below.
   {
     "id": "drone",
     "title": "Drone Obstacle Avoidance on the X500 V2",
@@ -276,4 +316,5 @@ const PROJECTS = [
     "role": "Ongoing research project. Repository not published yet.",
     "repo": null
   }
+  END OF X500 DRONE PROJECT */
 ];
