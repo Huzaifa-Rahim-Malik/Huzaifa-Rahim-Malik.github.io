@@ -1,176 +1,1228 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Muhammad Huzaifa Rahim Malik – Robotics &amp; Autonomous Systems</title>
-<style>
-:root{--bg:#f6f4ff;--card:#fff;--text:#1a1535;--muted:#5f5a7d;--line:#e4e0f5;--a:#6c4cff;--b:#ff5e7e;--c:#12b886;--chip:rgba(108,76,255,.1);--glow:rgba(108,76,255,.22);
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0a1f;--card:#17122e;--text:#efecff;--muted:#a49fc4;--line:#2a2350;--a:#9b86ff;--b:#ff7a95;--c:#3ddc97;--chip:rgba(155,134,255,.14);--glow:rgba(155,134,255,.25)}}
-:root[data-theme="dark"]{--bg:#0d0a1f;--card:#17122e;--text:#efecff;--muted:#a49fc4;--line:#2a2350;--a:#9b86ff;--b:#ff7a95;--c:#3ddc97;--chip:rgba(155,134,255,.14);--glow:rgba(155,134,255,.25)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(68px + env(safe-area-inset-top,0px));height:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100%}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#150f33;z-index:40}
-header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:41;background:rgba(21,15,51,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.09)}
-nav{max-width:1100px;margin:auto;min-height:58px;padding:6px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-nav b{color:#fff;font-size:1rem;cursor:pointer}nav b i{color:#ff7a95;font-style:normal}
-nav div{display:flex;gap:20px}nav a{color:#c9c2ee;text-decoration:none;font-size:.9rem;transition:.2s;cursor:pointer}nav a:hover{color:#ff7a95}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;color:#fff;background:radial-gradient(900px 500px at 80% 25%,#5a2a9e 0,transparent 60%),radial-gradient(700px 400px at 10% 90%,#8c1d5b55 0,transparent 60%),linear-gradient(160deg,#0d0a1f,#1f1250 75%)}
-#net{position:absolute;inset:0;width:100%;height:100%}
-.hw{position:relative;max-width:1100px;margin:auto;padding:110px 20px 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;width:100%}
-.hero small{color:#ff7a95;letter-spacing:.2em;text-transform:uppercase;font-size:.78rem}
-.hero h1{font-size:clamp(2.1rem,5.6vw,3.6rem);line-height:1.08;margin:10px 0}
-.hero h1 span{background:linear-gradient(90deg,#9b86ff,#ff7a95,#ffb86b);-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{font-size:1.2rem;min-height:2em;color:#ddd8f7}.role::after{content:"|";margin-left:2px;color:#ff7a95;animation:bl 1s steps(1) infinite}
-.hero p{max-width:540px;color:#b9b2dc}
-.btns{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
-.btn{padding:11px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.95rem;transition:.25s;cursor:pointer}
-.btn.p{background:linear-gradient(90deg,#8b6cff,#ff5e7e);color:#fff;box-shadow:0 8px 26px rgba(255,94,126,.3)}
-.btn.s{border:1px solid rgba(255,255,255,.3);color:#fff}.btn:hover{transform:translateY(-3px)}
-.collage{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
-.collage img{width:100%;aspect-ratio:4/3;border-radius:14px;border:3px solid rgba(255,255,255,.14);box-shadow:0 20px 50px rgba(0,0,0,.5);object-fit:cover;display:block;animation:fl 6s ease-in-out infinite}
-.collage .c1{transform:rotate(-2deg)}
-.collage .c2{transform:rotate(2deg);animation-delay:-2s}
-.collage .c3{transform:rotate(2deg);animation-delay:-4s}
-.collage .c4{transform:rotate(-2deg);animation-delay:-1s}
-.scroll{position:absolute;bottom:22px;left:50%;width:22px;height:36px;border:2px solid rgba(255,255,255,.4);border-radius:12px}
-.scroll::after{content:"";position:absolute;left:8px;top:6px;width:4px;height:8px;background:#ff7a95;border-radius:2px;animation:sc 1.6s infinite}
-main{max-width:1100px;margin:auto;padding:0 20px 40px}
-section{padding-top:80px}
-h2{font-size:clamp(1.6rem,4vw,2.2rem);margin:0 0 6px}
-h2::after{content:"";display:block;width:56px;height:4px;border-radius:2px;margin-top:8px;background:linear-gradient(90deg,var(--a),var(--b))}
-.sub{color:var(--muted);margin:0 0 28px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:-50px;position:relative;z-index:2}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.14)}
-.stat b{display:block;font-size:2rem;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}.stat span{color:var(--muted);font-size:.85rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.chips span{background:var(--chip);color:var(--a);font-size:.78rem;padding:3px 12px;border-radius:99px}
-.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
-.pc{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s;color:inherit;text-decoration:none}
-.pc:hover{transform:translateY(-8px);box-shadow:0 22px 50px var(--glow);border-color:var(--a)}
-.pc .im{aspect-ratio:16/10;overflow:hidden;position:relative;background:#1a1140}
-.pc img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.pc:hover img{transform:scale(1.07)}
-.pc .st{position:absolute;top:10px;left:10px;background:rgba(13,10,31,.75);color:#fff;font-size:.72rem;padding:3px 10px;border-radius:99px;backdrop-filter:blur(6px)}
-.pc .tx{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
-.eb{color:var(--b);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.pc h3{margin:4px 0 6px;font-size:1.1rem;line-height:1.3}.pc p{margin:0;color:var(--muted);font-size:.9rem;flex:1}
-.more{margin-top:12px;color:var(--a);font-weight:600;font-size:.9rem}
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.skills h4{margin:0 0 4px;color:var(--a)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.tl{border-left:2px solid var(--line);margin-left:6px;padding-left:22px}
-.tl div{position:relative;margin-bottom:22px}.tl div::before{content:"";position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--b);box-shadow:0 0 0 4px var(--glow)}
-.tl b{display:block}.tl span{color:var(--muted);font-size:.88rem}
-footer{margin-top:60px;padding:50px 20px;text-align:center;color:#c9c2ee;background:linear-gradient(160deg,#0d0a1f,#1f1250)}
-footer h2{color:#fff;display:inline-block}footer a{color:#ff7a95}
-.dv{max-width:1100px;margin:auto;padding:100px 20px 40px}
-.back{display:inline-block;margin-bottom:18px;color:var(--a);font-weight:600;cursor:pointer;border:1px solid var(--line);padding:7px 16px;border-radius:99px;background:var(--card)}.back:hover{border-color:var(--a)}
-.dh{border-radius:18px;overflow:hidden;position:relative;background:#1a1140;margin-bottom:26px}
-.dh img{width:100%;max-height:440px;object-fit:cover;display:block}
-.dh .ov{position:absolute;inset:auto 0 0;padding:60px 28px 24px;background:linear-gradient(transparent,rgba(13,10,31,.92));color:#fff}
-.dh h1{margin:4px 0;font-size:clamp(1.5rem,4vw,2.4rem);line-height:1.15}
-.dh .badge{display:inline-block;background:linear-gradient(90deg,#8b6cff,#ff5e7e);padding:2px 12px;border-radius:99px;font-size:.78rem;margin-left:8px}
-.dg{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:start}
-.dv h3{margin:0 0 10px;font-size:1.15rem}
-.dv li{margin:6px 0}
-table{width:100%;border-collapse:collapse;font-size:.9rem}td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{color:var(--muted);width:38%}
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:6px}
-.gal figure{margin:0;cursor:zoom-in;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:.3s}.gal figure:hover{transform:translateY(-4px);box-shadow:0 14px 34px var(--glow)}
-.gal img,.gal video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}.gal figcaption{padding:8px 12px;font-size:.82rem;color:var(--muted)}
-.demo{margin-top:6px}.demo figure{margin:0 0 14px;max-width:640px}.demo img,.demo video{width:100%;border-radius:12px;border:1px solid var(--line);display:block}.demo figcaption{font-size:.84rem;color:var(--muted);padding-top:6px}
-.gh{display:inline-block;margin-top:14px;padding:10px 20px;border-radius:10px;background:linear-gradient(90deg,#8b6cff,#ff5e7e);color:#fff;font-weight:600;text-decoration:none}
-.gh:hover{filter:brightness(1.1)}
-#lb{position:fixed;inset:0;z-index:60;background:rgba(8,5,20,.92);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
-#lb.on{display:flex}#lb img{max-width:100%;max-height:92vh;border-radius:10px}
-.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
-.fade{animation:fi .5s}
-@keyframes bl{50%{opacity:0}}@keyframes sc{0%{transform:translateY(0);opacity:1}100%{transform:translateY(14px);opacity:0}}@keyframes fl{50%{translate:0 -10px}}@keyframes fi{from{opacity:0;transform:translateY(14px)}}
-@media (max-width:820px){.hw,.grid2,.dg{grid-template-columns:1fr}.collage{gap:14px}nav div{gap:12px}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
-</style>
-</head>
-<body>
-<header><nav><b id="brand">Muhammad Huzaifa <i>Rahim Malik</i></b><div id="links"><a data-go="about">About</a><a data-go="projects">Projects</a><a data-go="skills">Skills</a><a data-go="resume">Resume</a><a data-go="contact">Contact</a></div></nav></header>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>
+      Muhammad Huzaifa Rahim Malik – Robotics &amp; Autonomous Systems
+    </title>
+    <style>
+      :root {
+        --bg: #f6f4ff;
+        --card: #fff;
+        --text: #1a1535;
+        --muted: #5f5a7d;
+        --line: #e4e0f5;
+        --a: #6c4cff;
+        --b: #ff5e7e;
+        --c: #12b886;
+        --chip: rgba(108, 76, 255, 0.1);
+        --glow: rgba(108, 76, 255, 0.22);
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0d0a1f;
+          --card: #17122e;
+          --text: #efecff;
+          --muted: #a49fc4;
+          --line: #2a2350;
+          --a: #9b86ff;
+          --b: #ff7a95;
+          --c: #3ddc97;
+          --chip: rgba(155, 134, 255, 0.14);
+          --glow: rgba(155, 134, 255, 0.25);
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #0d0a1f;
+        --card: #17122e;
+        --text: #efecff;
+        --muted: #a49fc4;
+        --line: #2a2350;
+        --a: #9b86ff;
+        --b: #ff7a95;
+        --c: #3ddc97;
+        --chip: rgba(155, 134, 255, 0.14);
+        --glow: rgba(155, 134, 255, 0.25);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: calc(68px + env(safe-area-inset-top, 0px));
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          16px/1.65 system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        min-height: 100%;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0 0 auto;
+        height: env(safe-area-inset-top, 0px);
+        background: #150f33;
+        z-index: 40;
+      }
+      header {
+        position: fixed;
+        top: env(safe-area-inset-top, 0px);
+        left: 0;
+        right: 0;
+        z-index: 41;
+        background: rgba(21, 15, 51, 0.82);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      }
+      nav {
+        max-width: 1100px;
+        margin: auto;
+        min-height: 58px;
+        padding: 6px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      nav b {
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      nav b i {
+        color: #ff7a95;
+        font-style: normal;
+      }
+      nav div {
+        display: flex;
+        gap: 20px;
+      }
+      nav a {
+        color: #c9c2ee;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+      nav a:hover {
+        color: #ff7a95;
+      }
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        color: #fff;
+        background:
+          radial-gradient(900px 500px at 80% 25%, #5a2a9e 0, transparent 60%),
+          radial-gradient(700px 400px at 10% 90%, #8c1d5b55 0, transparent 60%),
+          linear-gradient(160deg, #0d0a1f, #1f1250 75%);
+      }
+      #net {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .hw {
+        position: relative;
+        max-width: 1100px;
+        margin: auto;
+        padding: 110px 20px 80px;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 34px;
+        align-items: center;
+        width: 100%;
+      }
+      .hero small {
+        color: #ff7a95;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+      .hero h1 {
+        font-size: clamp(2.1rem, 5.6vw, 3.6rem);
+        line-height: 1.08;
+        margin: 10px 0;
+      }
+      .hero h1 span {
+        background: linear-gradient(90deg, #9b86ff, #ff7a95, #ffb86b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .role {
+        font-size: 1.2rem;
+        min-height: 2em;
+        color: #ddd8f7;
+      }
+      .role::after {
+        content: "|";
+        margin-left: 2px;
+        color: #ff7a95;
+        animation: bl 1s steps(1) infinite;
+      }
+      .hero p {
+        max-width: 540px;
+        color: #b9b2dc;
+      }
+      .btns {
+        margin-top: 22px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 11px 22px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: 0.25s;
+        cursor: pointer;
+      }
+      .btn.p {
+        background: linear-gradient(90deg, #8b6cff, #ff5e7e);
+        color: #fff;
+        box-shadow: 0 8px 26px rgba(255, 94, 126, 0.3);
+      }
+      .btn.s {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+      .collage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        align-items: center;
+      }
+      .collage img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        border-radius: 14px;
+        border: 3px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        object-fit: cover;
+        display: block;
+        animation: fl 6s ease-in-out infinite;
+      }
+      .collage .c1 {
+        transform: rotate(-2deg);
+      }
+      .collage .c2 {
+        transform: rotate(2deg);
+        animation-delay: -2s;
+      }
+      .collage .c3 {
+        transform: rotate(2deg);
+        animation-delay: -4s;
+      }
+      .collage .c4 {
+        transform: rotate(-2deg);
+        animation-delay: -1s;
+      }
+      .scroll {
+        position: absolute;
+        bottom: 22px;
+        left: 50%;
+        width: 22px;
+        height: 36px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        border-radius: 12px;
+      }
+      .scroll::after {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 6px;
+        width: 4px;
+        height: 8px;
+        background: #ff7a95;
+        border-radius: 2px;
+        animation: sc 1.6s infinite;
+      }
+      main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 20px 40px;
+      }
+      section {
+        padding-top: 80px;
+      }
+      h2 {
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        margin: 0 0 6px;
+      }
+      h2::after {
+        content: "";
+        display: block;
+        width: 56px;
+        height: 4px;
+        border-radius: 2px;
+        margin-top: 8px;
+        background: linear-gradient(90deg, var(--a), var(--b));
+      }
+      .sub {
+        color: var(--muted);
+        margin: 0 0 28px;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+        margin-top: -50px;
+        position: relative;
+        z-index: 2;
+      }
+      .stat {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 18px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+      }
+      .stat b {
+        display: block;
+        font-size: 2rem;
+        background: linear-gradient(90deg, var(--a), var(--b));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .stat span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 26px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .chips span {
+        background: var(--chip);
+        color: var(--a);
+        font-size: 0.78rem;
+        padding: 3px 12px;
+        border-radius: 99px;
+      }
+      .pg {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 24px;
+      }
+      .pc {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
+        color: inherit;
+        text-decoration: none;
+      }
+      .pc:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 22px 50px var(--glow);
+        border-color: var(--a);
+      }
+      .pc .im {
+        aspect-ratio: 16/10;
+        overflow: hidden;
+        position: relative;
+        background: #1a1140;
+      }
+      .pc img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s;
+      }
+      .pc:hover img {
+        transform: scale(1.07);
+      }
+      .pc .st {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(13, 10, 31, 0.75);
+        color: #fff;
+        font-size: 0.72rem;
+        padding: 3px 10px;
+        border-radius: 99px;
+        backdrop-filter: blur(6px);
+      }
+      .pc .tx {
+        padding: 18px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .eb {
+        color: var(--b);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .pc h3 {
+        margin: 4px 0 6px;
+        font-size: 1.1rem;
+        line-height: 1.3;
+      }
+      .pc p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        flex: 1;
+      }
+      .more {
+        margin-top: 12px;
+        color: var(--a);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+      }
+      .skills h4 {
+        margin: 0 0 4px;
+        color: var(--a);
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .tl {
+        border-left: 2px solid var(--line);
+        margin-left: 6px;
+        padding-left: 22px;
+      }
+      .tl div {
+        position: relative;
+        margin-bottom: 22px;
+      }
+      .tl div::before {
+        content: "";
+        position: absolute;
+        left: -30px;
+        top: 6px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--b);
+        box-shadow: 0 0 0 4px var(--glow);
+      }
+      .tl b {
+        display: block;
+      }
+      .tl span {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      footer {
+        margin-top: 60px;
+        padding: 50px 20px;
+        text-align: center;
+        color: #c9c2ee;
+        background: linear-gradient(160deg, #0d0a1f, #1f1250);
+      }
+      footer h2 {
+        color: #fff;
+        display: inline-block;
+      }
+      footer a {
+        color: #ff7a95;
+      }
+      .dv {
+        max-width: 1100px;
+        margin: auto;
+        padding: 100px 20px 40px;
+      }
+      .back {
+        display: inline-block;
+        margin-bottom: 18px;
+        color: var(--a);
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid var(--line);
+        padding: 7px 16px;
+        border-radius: 99px;
+        background: var(--card);
+      }
+      .back:hover {
+        border-color: var(--a);
+      }
+      .dh {
+        border-radius: 18px;
+        overflow: hidden;
+        position: relative;
+        background: #1a1140;
+        margin-bottom: 26px;
+      }
+      .dh img {
+        width: 100%;
+        max-height: 440px;
+        object-fit: cover;
+        display: block;
+      }
+      .dh .ov {
+        position: absolute;
+        inset: auto 0 0;
+        padding: 60px 28px 24px;
+        background: linear-gradient(transparent, rgba(13, 10, 31, 0.92));
+        color: #fff;
+      }
+      .dh h1 {
+        margin: 4px 0;
+        font-size: clamp(1.5rem, 4vw, 2.4rem);
+        line-height: 1.15;
+      }
+      .dh .badge {
+        display: inline-block;
+        background: linear-gradient(90deg, #8b6cff, #ff5e7e);
+        padding: 2px 12px;
+        border-radius: 99px;
+        font-size: 0.78rem;
+        margin-left: 8px;
+      }
+      .dg {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+      .dv h3 {
+        margin: 0 0 10px;
+        font-size: 1.15rem;
+      }
+      .dv li {
+        margin: 6px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      td {
+        padding: 8px 4px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      td:first-child {
+        color: var(--muted);
+        width: 38%;
+      }
+      .gal {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 14px;
+        margin-top: 6px;
+      }
+      .gal figure {
+        margin: 0;
+        cursor: zoom-in;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--card);
+        transition: 0.3s;
+      }
+      .gal figure:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 34px var(--glow);
+      }
+      .gal img,
+      .gal video {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        display: block;
+      }
+      .gal figcaption {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      .demo {
+        margin-top: 6px;
+      }
+      .demo figure {
+        margin: 0 0 14px;
+        max-width: 640px;
+      }
+      .demo img,
+      .demo video {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        display: block;
+      }
+      .demo figcaption {
+        font-size: 0.84rem;
+        color: var(--muted);
+        padding-top: 6px;
+      }
+      .gh {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #8b6cff, #ff5e7e);
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .gh:hover {
+        filter: brightness(1.1);
+      }
+      #lb {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        background: rgba(8, 5, 20, 0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        cursor: zoom-out;
+      }
+      #lb.on {
+        display: flex;
+      }
+      #lb img {
+        max-width: 100%;
+        max-height: 92vh;
+        border-radius: 10px;
+      }
+      .rv {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s,
+          transform 0.7s;
+      }
+      .rv.in {
+        opacity: 1;
+        transform: none;
+      }
+      .fade {
+        animation: fi 0.5s;
+      }
+      @keyframes bl {
+        50% {
+          opacity: 0;
+        }
+      }
+      @keyframes sc {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(14px);
+          opacity: 0;
+        }
+      }
+      @keyframes fl {
+        50% {
+          translate: 0 -10px;
+        }
+      }
+      @keyframes fi {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+      }
+      @media (max-width: 820px) {
+        .hw,
+        .grid2,
+        .dg {
+          grid-template-columns: 1fr;
+        }
+        .collage {
+          gap: 14px;
+        }
+        nav div {
+          gap: 12px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+        .rv {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <b id="brand">Muhammad Huzaifa <i>Rahim Malik</i></b>
+        <div id="links">
+          <a data-go="about">About</a><a data-go="projects">Projects</a
+          ><a data-go="skills">Skills</a><a data-go="resume">Resume</a
+          ><a data-go="contact">Contact</a>
+        </div>
+      </nav>
+    </header>
 
-<div id="home">
-<div class="hero">
-<canvas id="net"></canvas>
-<div class="hw">
-<div>
-<small>Robotics · Autonomy · Embedded</small>
-<h1>Muhammad Huzaifa <span>Rahim Malik</span></h1>
-<div class="role" id="role"></div>
-<p>I design the electronics and intelligence behind autonomous machines: drones, outdoor rovers, legged robots and swarm vehicles. Based in Islamabad, Pakistan.</p>
-<div class="btns"><a class="btn p" data-go="projects">Explore projects</a><a class="btn s" href="https://github.com/Huzaifa-Rahim-Malik">GitHub</a></div>
-</div>
-<div class="collage"><img class="c1" id="h1i" alt="AT-IntelliRover render"><img class="c2" id="h2i" alt="Mini swarm vehicle"><img class="c3" id="h3i" alt="Quadruped robot"><img class="c4" id="h4i" alt="Drone"></div>
-</div>
-<div class="scroll"></div>
-</div>
-<main>
-<div class="stats rv">
-<div class="stat"><b data-n="89" data-s="%">0</b><span>NLU accuracy with LLM fallback</span></div>
-<div class="stat"><b data-n="10" data-s="/10">0</b><span>real-robot navigation trials reached</span></div>
-<div class="stat"><b data-n="12" data-s="">0</b><span>DOF quadruped designed</span></div>
-<div class="stat"><b data-n="48" data-s=" Ah">0</b><span>power system on the outdoor rover</span></div>
-</div>
-<section id="about" class="rv"><h2>About</h2><p class="sub">Electronics design meets robot autonomy.</p>
-<div class="card"><p>Robotics and electronics engineer with hands-on experience in the design, integration and testing of autonomous systems. My work spans the full stack, from custom power and sensor electronics to embedded compute and ROS 2 navigation software, with a growing focus on AI-driven robotics.</p>
-<p>I am currently an Assistant Manager at AITEC NCP in Islamabad, leading electronics design on autonomous platforms. I am seeking graduate research opportunities in robotics and AI, starting September 2027.</p></div>
-<div class="skills" style="margin-top:18px"><div class="card"><h4>Focus</h4>Autonomous systems, electronics design and AI-driven robotics.</div><div class="card"><h4>Experience</h4>Assistant Manager at AITEC NCP (2024 – Present). Design and Test Engineer at BCube (2022 – 2024).</div><div class="card"><h4>Seeking</h4>Graduate programs and research collaborations in robotics and AI, starting September 2027.</div></div></section>
-<section id="projects"><h2 class="rv">Research &amp; Projects</h2><p class="sub rv">Click a project to see photos, demos, specs and details.</p><div class="pg" id="pg"></div></section>
-<section id="skills" class="rv"><h2>Skills</h2><p class="sub">From schematic to autonomy stack.</p>
-<div class="skills"><div class="card"><h4>Electronics</h4>Altium Designer, PCB and power-distribution design, load analysis, sensor interfacing, BOM and wiring documentation.</div><div class="card"><h4>Robotics software</h4>ROS 2, Nav2, SLAM Toolbox, MAVLink, PX4 and ArduPilot, Gazebo, rosbag workflows.</div><div class="card"><h4>Compute &amp; embedded</h4>NVIDIA Jetson, Raspberry Pi, Arduino, embedded Linux, I2C and PWM control.</div><div class="card"><h4>AI &amp; data</h4>Local LLMs with Ollama, Whisper and Piper voice pipelines, LabVIEW and Python data acquisition.</div></div></section>
-<section id="resume" class="rv"><h2>Resume</h2><p class="sub">Experience and education.</p>
-<div class="grid2"><div class="card"><div class="tl"><div><b>Assistant Manager · AITEC NCP, Islamabad</b><span>Aug 2024 – Present</span></div><div><b>Junior Design Engineer · BCube Pvt Ltd</b><span>2022 – 2024</span></div><div><b>Junior Test Engineer · BCube Pvt Ltd</b><span>2022 – 2024</span></div></div></div>
-<div class="card"><div class="tl"><div><b>B.S. Electronics · Quaid-i-Azam University</b><span>Islamabad · 2017 – 2021</span></div></div><p class="sub" style="margin:10px 0 0">Targeting Erasmus Mundus and professor-led robotics/AI programs, September 2027.</p></div></div></section>
-</main>
-</div>
+    <div id="home">
+      <div class="hero">
+        <canvas id="net"></canvas>
+        <div class="hw">
+          <div>
+            <small>Robotics · Autonomy · Embedded</small>
+            <h1>Muhammad Huzaifa <span>Rahim Malik</span></h1>
+            <div class="role" id="role"></div>
+            <p>
+              I design the electronics and intelligence behind autonomous
+              machines: drones, outdoor rovers, legged robots and swarm
+              vehicles. Based in Islamabad, Pakistan.
+            </p>
+            <div class="btns">
+              <a class="btn p" data-go="projects">Explore projects</a
+              ><a class="btn s" href="https://github.com/Huzaifa-Rahim-Malik"
+                >GitHub</a
+              >
+            </div>
+          </div>
+          <div class="collage">
+            <img class="c1" id="h1i" alt="AT-IntelliRover render" /><img
+              class="c2"
+              id="h2i"
+              alt="Mini swarm vehicle"
+            /><img class="c3" id="h3i" alt="Quadruped robot" /><img
+              class="c4"
+              id="h4i"
+              alt="Drone"
+            />
+          </div>
+        </div>
+        <div class="scroll"></div>
+      </div>
+      <main>
+        <div class="stats rv">
+          <div class="stat">
+            <b data-n="89" data-s="%">0</b
+            ><span>NLU accuracy with LLM fallback</span>
+          </div>
+          <div class="stat">
+            <b data-n="10" data-s="/10">0</b
+            ><span>real-robot navigation trials reached</span>
+          </div>
+          <div class="stat">
+            <b data-n="12" data-s="">0</b><span>DOF quadruped designed</span>
+          </div>
+          <div class="stat">
+            <b data-n="48" data-s=" Ah">0</b
+            ><span>power system on the outdoor rover</span>
+          </div>
+        </div>
+        <section id="about" class="rv">
+          <h2>About</h2>
+          <p class="sub">Electronics design meets robot autonomy.</p>
+          <div class="card">
+            <p>
+              Electronics engineer specializing in hardware design, embedded
+              systems, and autonomous robotics. Experienced in developing custom
+              power and sensor electronics, embedded computing platforms, and
+              ROS 2-based navigation and perception systems. Research interests
+              include AI-driven robotics, language-guided navigation, and
+              multi-robot coordination. Focused on translating complex
+              engineering concepts into reliable, integrated systems through
+              systematic design, development, and real-world validation.
+            </p>
+            <div class="chips">
+                <span>Autonomous Robotics</span>
+                <span>Drone Autonomy</span>
+                <span>ROS 2 & Navigation</span>
+                <span>Embedded Systems</span>
+                <span>Embedded Linux</span>
+                <span>PCB & Electronics Design</span>
+                <span>AI-Driven Robotics</span>
+                <span>LLM-Based Navigation</span>
+                <span>Multi-Robot Coordination</span>
+                <span>Sensor Integration</span>
+            </div>
+          </div>
+        </section>
+        <section id="projects">
+          <h2 class="rv">Research &amp; Projects</h2>
+          <p class="sub rv">
+            Click a project to see photos, demos, specs and details.
+          </p>
+          <div class="pg" id="pg"></div>
+        </section>
+        <section id="skills" class="rv">
+          <h2>Skills</h2>
+          <p class="sub">From schematic to autonomy stack.</p>
+          <div class="skills">
+            <div class="card">
+              <h4>Electronics</h4>
+              Altium Designer, PCB and power-distribution design, load analysis,
+              sensor interfacing, BOM and wiring documentation.
+            </div>
+            <div class="card">
+              <h4>Robotics software</h4>
+              ROS 2, Nav2, SLAM Toolbox, MAVLink, PX4 and ArduPilot, Gazebo,
+              rosbag workflows.
+            </div>
+            <div class="card">
+              <h4>Compute &amp; embedded</h4>
+              NVIDIA Jetson, Raspberry Pi, Arduino, embedded Linux, I2C and PWM
+              control.
+            </div>
+            <div class="card">
+              <h4>AI &amp; data</h4>
+              Local LLMs with Ollama, Whisper and Piper voice pipelines, LabVIEW
+              and Python data acquisition.
+            </div>
+          </div>
+        </section>
+        <section id="resume" class="rv">
+          <style>
+            .cvp {
+              position: relative;
+              display: block;
+              width: 25%;
+              min-width: 200px;
+              height: 150px;
+              border: 1px solid var(--line);
+              border-radius: 12px;
+              overflow: hidden;
+              background: #fff;
+              cursor: pointer;
+            }
+            .cvp iframe {
+              width: calc(100% + 24px);
+              height: 100%;
+              border: 0;
+              display: block;
+              pointer-events: none;
+            }
+            .cvp span {
+              position: absolute;
+              inset: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+              font-weight: 600;
+              background: rgba(20, 14, 50, 0.45);
+              -webkit-backdrop-filter: blur(6px);
+              backdrop-filter: blur(6px);
+              opacity: 0;
+              transition: opacity 0.25s;
+            }
+            .cvp:hover span,
+            .cvp:focus-visible span {
+              opacity: 1;
+            }
+          </style>
+          <h2>Resume</h2>
+          <p class="sub">Experience, education and projects.</p>
+          <a
+            class="cvp"
+            href="CV/Huzaifa_Rahim_Malik_CV.pdf"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open CV in a new tab"
+          >
+            <iframe
+              src="CV/Huzaifa_Rahim_Malik_CV.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+              title="CV preview"
+              tabindex="-1"
+            ></iframe>
+            <span>View CV</span>
+          </a>
+        </section>
+      </main>
+    </div>
 
-<div id="detail" class="dv" style="display:none"></div>
+    <div id="detail" class="dv" style="display: none"></div>
 
-<footer id="contact"><h2>Let’s connect</h2><p>Open to research collaborations, scholarships and robotics roles.</p>
-<p> · <a href="mailto:huzaifarahim987@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/muhammad-huzaifa-rahim-malik" target="_blank" rel="noopener">LinkedIn</a></p>
-<p style="font-size:.85rem;opacity:.7">© 2026 Muhammad Huzaifa Rahim Malik</p></footer>
-<div id="lb"><img alt=""></div>
+    <footer id="contact">
+      <h2>Let’s connect</h2>
+      <p>Open to research collaborations, scholarships and robotics roles.</p>
+      <p>
+        · <a href="mailto:huzaifarahim987@gmail.com">Email</a> ·
+        <a
+          href="https://www.linkedin.com/in/muhammad-huzaifa-rahim-malik"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >
+      </p>
+      <p style="font-size: 0.85rem; opacity: 0.7">
+        © 2026 Muhammad Huzaifa Rahim Malik
+      </p>
+    </footer>
+    <div id="lb"><img alt="" /></div>
 
-<script src="data/projects.js"></script>
-<script>
-(function(){
-var $=function(s){return document.querySelector(s)},home=$('#home'),det=$('#detail'),still=matchMedia('(prefers-reduced-motion:reduce)').matches;
-$('#h1i').src=HERO.hero1;$('#h2i').src=HERO.hero2;$('#h3i').src=HERO.hero3;$('#h4i').src=HERO.hero4;
-function media(s,a){return /\.(mp4|webm)$/i.test(s)?'<video src="'+s+'" autoplay muted loop playsinline></video>':'<img loading="lazy" src="'+s+'" alt="'+(a||'')+'">'}
-function ul(a){return '<ul>'+a.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'}
-$('#pg').innerHTML=PROJECTS.map(function(p){return '<a class="pc rv" data-id="'+p.id+'"><div class="im"><img src="'+p.cover+'" alt="'+p.title+'"><span class="st">'+p.status+'</span></div><div class="tx"><div class="eb">'+p.tag+'</div><h3>'+p.title+'</h3><p>'+p.sum+'</p><div class="chips">'+p.tech.slice(0,3).map(function(t){return '<span>'+t+'</span>'}).join('')+'</div><div class="more">View details →</div></div></a>'}).join('');
-function openP(id){var p=PROJECTS.filter(function(x){return x.id==id})[0];if(!p)return;
-var h='<span class="back" id="bk">← All projects</span><div class="dh fade"><img src="'+p.cover+'" alt=""><div class="ov"><div class="eb" style="color:#ff9bb0">'+p.tag+'</div><h1>'+p.title+'</h1></div></div>';
-h+='<div class="dg fade"><div><div class="card"><h3>Overview <span class="badge" style="display:inline-block;background:var(--chip);color:var(--a);font-size:.75rem;padding:2px 12px;border-radius:99px;margin-left:6px;font-weight:600">'+p.status+'</span></h3>'+p.ov.map(function(x){return '<p>'+x+'</p>'}).join('')+'<h3 style="margin-top:18px">Highlights</h3>'+ul(p.hl)+'<h3 style="margin-top:18px">My role</h3><p>'+p.role+'</p><div class="chips">'+p.tech.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div></div></div>';
-h+='<div><div class="card"><h3>Specifications</h3><table>'+p.specs.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'}).join('')+'</table>'+(p.repo?'<a class="gh" href="'+p.repo+'">View source on GitHub →</a>':'<p class="sub" style="margin:14px 0 0">Repository not published yet.</p>')+'</div></div></div>';
-var dm=[p.demo,p.demo2].filter(Boolean);
-if(dm.length)h+='<div class="card fade" style="margin-top:24px"><h3>Demo</h3><div class="demo">'+dm.map(function(d){return '<figure>'+media(d[0])+'<figcaption>'+d[1]+'</figcaption></figure>'}).join('')+'<p class="sub" style="margin:0">Short, compressed clips; full-quality demos are in the GitHub repository.</p></div></div>';
-if(p.gal.length)h+='<div class="card fade" style="margin-top:24px"><h3>Gallery</h3><div class="gal">'+p.gal.map(function(g){return '<figure>'+media(g[0],g[1])+'<figcaption>'+g[1]+'</figcaption></figure>'}).join('')+'</div></div>';
-det.innerHTML=h;home.style.display='none';det.style.display='block';scrollTo(0,0);try{location.hash='p-'+id}catch(e){}
-$('#bk').onclick=function(){goHome('projects')};
-det.querySelectorAll('.gal figure,.dh').forEach(function(f){f.onclick=function(){var i=f.querySelector('img');if(!i)return;$('#lb img').src=i.src;$('#lb').classList.add('on')}})}
-function goHome(sec){det.style.display='none';home.style.display='block';try{location.hash=sec||''}catch(e){}var e=sec&&document.getElementById(sec);if(e)e.scrollIntoView();else scrollTo(0,0);kick()}
-$('#lb').onclick=function(){this.classList.remove('on')};
-document.addEventListener('click',function(e){var c=e.target.closest('.pc');if(c){e.preventDefault();openP(c.dataset.id);return}var g=e.target.closest('[data-go]');if(g){e.preventDefault();if(home.style.display=='none'){goHome(g.dataset.go)}else{var t=document.getElementById(g.dataset.go);if(t)t.scrollIntoView();}return}if(e.target.closest('#brand'))goHome()});
-var h=(location.hash||'').slice(1);if(h.indexOf('p-')==0)openP(h.slice(2));
-var c=$('#net'),x=c.getContext('2d'),N=[],W,H,m={x:-999,y:-999};
-function rs(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;N=[];var n=Math.min(70,Math.floor(W/16));for(var i=0;i<n;i++)N.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5})}
-rs();addEventListener('resize',rs);c.parentNode.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});
-function d(){x.clearRect(0,0,W,H);for(var i=0;i<N.length;i++){var p=N[i];if(!still){p.x+=p.vx;p.y+=p.vy}if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;x.fillStyle='rgba(255,122,149,.85)';x.beginPath();x.arc(p.x,p.y,2,0,6.3);x.fill();
-for(var j=i+1;j<N.length;j++){var q=N[j],dx=p.x-q.x,dy=p.y-q.y,s=dx*dx+dy*dy;if(s<14000){x.strokeStyle='rgba(155,134,255,'+(.35*(1-s/14000))+')';x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}
-var mx=p.x-m.x,my=p.y-m.y,ms=mx*mx+my*my;if(ms<20000){x.strokeStyle='rgba(255,184,107,'+(.55*(1-ms/20000))+')';x.beginPath();x.moveTo(p.x,p.y);x.lineTo(m.x,m.y);x.stroke()}}
-if(!still)requestAnimationFrame(d)}d();
-var R=['Robotics & Autonomous Systems Engineer','Drone Autonomy Researcher','Embedded Hardware Designer'],ri=0,ci=0,dl=false,el=$('#role');
-function t(){var s=R[ri];ci+=dl?-1:1;el.textContent=s.slice(0,ci);var w=dl?35:70;if(!dl&&ci==s.length){dl=true;w=1600}else if(dl&&ci==0){dl=false;ri=(ri+1)%R.length;w=300}if(still){el.textContent=R[0];return}setTimeout(t,w)}t();
-function cnt(e){var n=+e.dataset.n,s=e.dataset.s,k=0;if(still){e.textContent=n+s;return}var iv=setInterval(function(){k+=Math.ceil(n/40);if(k>=n){k=n;clearInterval(iv)}e.textContent=k+s},35)}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('[data-n]').forEach(cnt);io.unobserve(e.target)}})},{threshold:.1});
-function kick(){document.querySelectorAll('.rv:not(.in)').forEach(function(e){io.observe(e)})}kick();
-})();
-</script>
-</body>
+    <script src="data/projects.js"></script>
+    <script>
+      (function () {
+        var $ = function (s) {
+            return document.querySelector(s);
+          },
+          home = $("#home"),
+          det = $("#detail"),
+          still = matchMedia("(prefers-reduced-motion:reduce)").matches;
+        $("#h1i").src = HERO.hero1;
+        $("#h2i").src = HERO.hero2;
+        $("#h3i").src = HERO.hero3;
+        $("#h4i").src = HERO.hero4;
+        function media(s, a) {
+          return /\.(mp4|webm)$/i.test(s)
+            ? '<video src="' + s + '" autoplay muted loop playsinline></video>'
+            : '<img loading="lazy" src="' + s + '" alt="' + (a || "") + '">';
+        }
+        function ul(a) {
+          return (
+            "<ul>" +
+            a
+              .map(function (x) {
+                return "<li>" + x + "</li>";
+              })
+              .join("") +
+            "</ul>"
+          );
+        }
+        $("#pg").innerHTML = PROJECTS.map(function (p) {
+          return (
+            '<a class="pc rv" data-id="' +
+            p.id +
+            '"><div class="im"><img src="' +
+            p.cover +
+            '" alt="' +
+            p.title +
+            '"><span class="st">' +
+            p.status +
+            '</span></div><div class="tx"><div class="eb">' +
+            p.tag +
+            "</div><h3>" +
+            p.title +
+            "</h3><p>" +
+            p.sum +
+            '</p><div class="chips">' +
+            p.tech
+              .slice(0, 3)
+              .map(function (t) {
+                return "<span>" + t + "</span>";
+              })
+              .join("") +
+            '</div><div class="more">View details →</div></div></a>'
+          );
+        }).join("");
+        function openP(id) {
+          var p = PROJECTS.filter(function (x) {
+            return x.id == id;
+          })[0];
+          if (!p) return;
+          var h =
+            '<span class="back" id="bk">← All projects</span><div class="dh fade"><img src="' +
+            p.cover +
+            '" alt=""><div class="ov"><div class="eb" style="color:#ff9bb0">' +
+            p.tag +
+            "</div><h1>" +
+            p.title +
+            "</h1></div></div>";
+          h +=
+            '<div class="dg fade"><div><div class="card"><h3>Overview <span class="badge" style="display:inline-block;background:var(--chip);color:var(--a);font-size:.75rem;padding:2px 12px;border-radius:99px;margin-left:6px;font-weight:600">' +
+            p.status +
+            "</span></h3>" +
+            p.ov
+              .map(function (x) {
+                return "<p>" + x + "</p>";
+              })
+              .join("") +
+            '<h3 style="margin-top:18px">Highlights</h3>' +
+            ul(p.hl) +
+            '<h3 style="margin-top:18px">My role</h3><p>' +
+            p.role +
+            '</p><div class="chips">' +
+            p.tech
+              .map(function (t) {
+                return "<span>" + t + "</span>";
+              })
+              .join("") +
+            "</div></div></div>";
+          h +=
+            '<div><div class="card"><h3>Specifications</h3><table>' +
+            p.specs
+              .map(function (r) {
+                return "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td></tr>";
+              })
+              .join("") +
+            "</table>" +
+            (p.repo
+              ? '<a class="gh" href="' +
+                p.repo +
+                '">View source on GitHub →</a>'
+              : '<p class="sub" style="margin:14px 0 0">Repository not published yet.</p>') +
+            "</div></div></div>";
+          var dm = [p.demo, p.demo2].filter(Boolean);
+          if (dm.length)
+            h +=
+              '<div class="card fade" style="margin-top:24px"><h3>Demo</h3><div class="demo">' +
+              dm
+                .map(function (d) {
+                  return (
+                    "<figure>" +
+                    media(d[0]) +
+                    "<figcaption>" +
+                    d[1] +
+                    "</figcaption></figure>"
+                  );
+                })
+                .join("") +
+              '<p class="sub" style="margin:0">Short, compressed clips; full-quality demos are in the GitHub repository.</p></div></div>';
+          if (p.gal.length)
+            h +=
+              '<div class="card fade" style="margin-top:24px"><h3>Gallery</h3><div class="gal">' +
+              p.gal
+                .map(function (g) {
+                  return (
+                    "<figure>" +
+                    media(g[0], g[1]) +
+                    "<figcaption>" +
+                    g[1] +
+                    "</figcaption></figure>"
+                  );
+                })
+                .join("") +
+              "</div></div>";
+          det.innerHTML = h;
+          home.style.display = "none";
+          det.style.display = "block";
+          scrollTo(0, 0);
+          try {
+            location.hash = "p-" + id;
+          } catch (e) {}
+          $("#bk").onclick = function () {
+            goHome("projects");
+          };
+          det.querySelectorAll(".gal figure,.dh").forEach(function (f) {
+            f.onclick = function () {
+              var i = f.querySelector("img");
+              if (!i) return;
+              $("#lb img").src = i.src;
+              $("#lb").classList.add("on");
+            };
+          });
+        }
+        function goHome(sec) {
+          det.style.display = "none";
+          home.style.display = "block";
+          try {
+            location.hash = sec || "";
+          } catch (e) {}
+          var e = sec && document.getElementById(sec);
+          if (e) e.scrollIntoView();
+          else scrollTo(0, 0);
+          kick();
+        }
+        $("#lb").onclick = function () {
+          this.classList.remove("on");
+        };
+        document.addEventListener("click", function (e) {
+          var c = e.target.closest(".pc");
+          if (c) {
+            e.preventDefault();
+            openP(c.dataset.id);
+            return;
+          }
+          var g = e.target.closest("[data-go]");
+          if (g) {
+            e.preventDefault();
+            if (home.style.display == "none") {
+              goHome(g.dataset.go);
+            } else {
+              var t = document.getElementById(g.dataset.go);
+              if (t) t.scrollIntoView();
+            }
+            return;
+          }
+          if (e.target.closest("#brand")) goHome();
+        });
+        var h = (location.hash || "").slice(1);
+        if (h.indexOf("p-") == 0) openP(h.slice(2));
+        var c = $("#net"),
+          x = c.getContext("2d"),
+          N = [],
+          W,
+          H,
+          m = { x: -999, y: -999 };
+        function rs() {
+          W = c.width = c.offsetWidth;
+          H = c.height = c.offsetHeight;
+          N = [];
+          var n = Math.min(70, Math.floor(W / 16));
+          for (var i = 0; i < n; i++)
+            N.push({
+              x: Math.random() * W,
+              y: Math.random() * H,
+              vx: (Math.random() - 0.5) * 0.5,
+              vy: (Math.random() - 0.5) * 0.5,
+            });
+        }
+        rs();
+        addEventListener("resize", rs);
+        c.parentNode.addEventListener("mousemove", function (e) {
+          var r = c.getBoundingClientRect();
+          m.x = e.clientX - r.left;
+          m.y = e.clientY - r.top;
+        });
+        function d() {
+          x.clearRect(0, 0, W, H);
+          for (var i = 0; i < N.length; i++) {
+            var p = N[i];
+            if (!still) {
+              p.x += p.vx;
+              p.y += p.vy;
+            }
+            if (p.x < 0 || p.x > W) p.vx *= -1;
+            if (p.y < 0 || p.y > H) p.vy *= -1;
+            x.fillStyle = "rgba(255,122,149,.85)";
+            x.beginPath();
+            x.arc(p.x, p.y, 2, 0, 6.3);
+            x.fill();
+            for (var j = i + 1; j < N.length; j++) {
+              var q = N[j],
+                dx = p.x - q.x,
+                dy = p.y - q.y,
+                s = dx * dx + dy * dy;
+              if (s < 14000) {
+                x.strokeStyle =
+                  "rgba(155,134,255," + 0.35 * (1 - s / 14000) + ")";
+                x.beginPath();
+                x.moveTo(p.x, p.y);
+                x.lineTo(q.x, q.y);
+                x.stroke();
+              }
+            }
+            var mx = p.x - m.x,
+              my = p.y - m.y,
+              ms = mx * mx + my * my;
+            if (ms < 20000) {
+              x.strokeStyle =
+                "rgba(255,184,107," + 0.55 * (1 - ms / 20000) + ")";
+              x.beginPath();
+              x.moveTo(p.x, p.y);
+              x.lineTo(m.x, m.y);
+              x.stroke();
+            }
+          }
+          if (!still) requestAnimationFrame(d);
+        }
+        d();
+        var R = [
+            "Robotics & Autonomous Systems Engineer",
+            "Drone Autonomy Researcher",
+            "Embedded Hardware Designer",
+          ],
+          ri = 0,
+          ci = 0,
+          dl = false,
+          el = $("#role");
+        function t() {
+          var s = R[ri];
+          ci += dl ? -1 : 1;
+          el.textContent = s.slice(0, ci);
+          var w = dl ? 35 : 70;
+          if (!dl && ci == s.length) {
+            dl = true;
+            w = 1600;
+          } else if (dl && ci == 0) {
+            dl = false;
+            ri = (ri + 1) % R.length;
+            w = 300;
+          }
+          if (still) {
+            el.textContent = R[0];
+            return;
+          }
+          setTimeout(t, w);
+        }
+        t();
+        function cnt(e) {
+          var n = +e.dataset.n,
+            s = e.dataset.s,
+            k = 0;
+          if (still) {
+            e.textContent = n + s;
+            return;
+          }
+          var iv = setInterval(function () {
+            k += Math.ceil(n / 40);
+            if (k >= n) {
+              k = n;
+              clearInterval(iv);
+            }
+            e.textContent = k + s;
+          }, 35);
+        }
+        var io = new IntersectionObserver(
+          function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                e.target.querySelectorAll("[data-n]").forEach(cnt);
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        function kick() {
+          document.querySelectorAll(".rv:not(.in)").forEach(function (e) {
+            io.observe(e);
+          });
+        }
+        kick();
+      })();
+    </script>
+  </body>
 </html>
