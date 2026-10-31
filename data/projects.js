@@ -199,7 +199,7 @@ const PROJECTS = [
     "title": "LLM Multi-Robot Navigation and Robot Tracking",
     "tag": "AI + multi-robot Navigation + Tracking",
     "status": "Completed",
-    "cover": "images/Multi-Robot Navigation and RobotTracking/cover.webp",
+    "cover": "images/Multi_Robot_Navigation/cover.webp",
     "sum": "A leader-follower multi-robot system: a TurtleBot 4 driven by voice and text commands, dual ZED 2i cameras tracking every robot, and pose hand-off to a custom mini swarm vehicle.",
     "ov": [
       "An extension of my LLM-based TurtleBot 4 navigation work to a leader-follower setup in an 8 × 3 m indoor arena. The TurtleBot 4 leader takes natural-language text or voice commands (Whisper, Ollama and Nav2 on ROS 2 Jazzy), and on arrival it publishes its position so the custom Mini Swarm Vehicle follower can be sent to it.",
@@ -220,10 +220,10 @@ const PROJECTS = [
       ["Arena", "8 × 3 m indoor arena"]
     ],
     "gal": [
-      ["images/Multi-Robot Navigation and RobotTracking/system.webp", "Overall Flow of System"]
+      ["images/Multi_Robot_Navigation/system.webp", "Overall Flow of System"]
     ],
-    "demo": ["images/Multi-Robot Navigation and RobotTracking/GUI.mp4", "Real-Time GUI"],
-    "demo2": ["images/Multi-Robot Navigation and RobotTracking/Camera.mp4", "Multiple Robot Tracking in Arena"],
+    "demo": ["images/Multi_Robot_Navigation/GUI.mp4", "Real-Time GUI"],
+    "demo2": ["images/Multi_Robot_Navigation/Camera.mp4", "Multiple Robot Tracking in Arena"],
     "tech": [
       "ROS 2 Jazzy",
       "Nav2",
